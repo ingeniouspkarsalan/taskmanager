@@ -1,5 +1,9 @@
 import React,{ Component } from "react";
 import TextFieldGroup from "../../common/Textfield";
+import { registeruser } from "../../actions/authAction";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 class Register extends Component{
 
@@ -27,15 +31,33 @@ class Register extends Component{
         e.preventDefault();
 
         const newuser ={
+            name:this.state.name,
+            age:this.state.age,
             email:this.state.email,
-            password:this.state.password
+            password:this.state.password,
+            repeat_password:this.state.repeat_password
         }
 
-        this.props.loginuser(newuser);
+        this.props.registeruser(newuser,this.props.history);
         
     }
 
+    componentDidMount() {
+        if (this.props.auth.isAuthenticated) {
+          this.props.history.push('/dashboard');
+        }
+      }
+
+    componentWillReceiveProps(nextprops){
+        if(nextprops.errors){
+            this.setState({errors:nextprops.errors});
+        }
+    }
+
     render(){
+
+        const {errors} = this.state;
+
         return(
             <div className="auth">
             <div className="dark-overlay">
@@ -54,6 +76,7 @@ class Register extends Component{
                       label="name"
                       value={this.state.name} 
                       onChange={this.onchange.bind(this)}
+                        error={errors.name}
                         />
 
             <label for="age">Age :</label>
@@ -64,6 +87,7 @@ class Register extends Component{
                       label="age"
                       value={this.state.age} 
                       onChange={this.onchange.bind(this)}
+                      error={errors.age}
                         />
             <label for="email">Email :</label>
                   <TextFieldGroup 
@@ -73,6 +97,7 @@ class Register extends Component{
                       name="email" required
                       value={this.state.email} 
                       onChange={this.onchange.bind(this)}
+                      error={errors.email}
                         />
             <label for="password">Password :</label>
                   <TextFieldGroup 
@@ -82,6 +107,7 @@ class Register extends Component{
                       name="password" required
                       value={this.state.password} 
                       onChange={this.onchange.bind(this)}
+                      error={errors.pass}
                       />
             <label for="repeat_password">Repeat Password :</label>
                   <TextFieldGroup 
@@ -103,5 +129,15 @@ class Register extends Component{
         );
     }
 }
+Register.propTypes = {
+    registeruser : PropTypes.func.isRequired,
+    auth  : PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+  };
 
-export default Register;
+const mapStateToProps = (state) =>({
+    auth:state.auth,
+    errors:state.errors
+});
+
+export default connect(mapStateToProps,{registeruser})(withRouter(Register));

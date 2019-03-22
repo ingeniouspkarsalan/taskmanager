@@ -31,7 +31,7 @@ app.get('/',(req,res)=>{
 var routes = require('./routes/u_route');
 app.use('/api',routes);
 
-var PORT = process.env.PORT || 3005;
+var PORT = process.env.PORT || 2500;
 
 app.listen(PORT,()=>{
     console.log(`Server Running on Port ${PORT}`);
