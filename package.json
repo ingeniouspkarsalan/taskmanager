@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
@@ -12,6 +14,8 @@
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
+    "material-ui": "^1.0.0-beta.47",
+    "mdbreact": "^4.11.1",
     "mongoose": "^5.4.19",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
@@ -34,7 +38,7 @@
     "server": "nodemon server/index.js",
     "dev": "concurrently \"npm run server\" \"npm start\""
   },
-  "proxy": "http://localhost:2500",
+  "proxy": "http://localhost:2600",
   "eslintConfig": {
     "extends": "react-app"
   },

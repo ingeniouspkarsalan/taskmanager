@@ -1,16 +1,15 @@
 import React,{ Component } from "react";
-import { Route } from "react-router-dom";
 
 
-class Dashboard extends Component{
+class Content extends Component{
     render(){
         return(
             <div>
-                <p>abcd</p>
+                abcd
             </div>
 
         );
     }
 }
 
-export default Dashboard;
+export default Content;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Navbars from './components/layouts/headerNav';
+import Navbar from "./components/layouts/navbar";
 import Landing from './components/layouts/landing';
 import Footer from "./components/layouts/footer";
 
@@ -37,12 +37,12 @@ class App extends Component {
       <div>
         <Provider store={ store }>
       <Router>
-        <Navbars/>
+        <Navbar/>
         <Route exact path="/" component={Landing}/>
         <Route exact path="/login" component={ Login }/>
         <Route exact path="/register" component={ Register }/>
         <Switch>
-          <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+          <PrivateRoute path="/dashboard" component={Dashboard}/>
         </Switch>
         <Footer/>
         </Router>
