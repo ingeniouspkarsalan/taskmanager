@@ -188,6 +188,8 @@ class Navbar extends Component {
     </div>
     )
 
+    
+
 
 
 
@@ -210,10 +212,11 @@ class Navbar extends Component {
             >
               <MenuIcon />
             </IconButton>
+            
             <Typography variant="h6" color="inherit" noWrap className={classes.grow}>
-              Task Manager
+            <Link to="/" style={{color:"white"}}> Task Manager </Link>
             </Typography>
-
+           
             {isAuthenticated ? (
               <div>
                 <IconButton
@@ -238,7 +241,7 @@ class Navbar extends Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                  <Link to="/profile"><MenuItem onClick={this.handleClose}>Profile</MenuItem></Link>
                   <MenuItem onClick={this.onlogout.bind(this)}>Logout</MenuItem>
                 </Menu>
               </div>
