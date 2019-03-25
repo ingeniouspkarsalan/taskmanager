@@ -163,9 +163,13 @@ class Navbar extends Component {
     const authlink = (
       <div>
     <Grid container justify="center" alignItems="center">
-      <Avatar alt={user.name} 
-       src={require("../../assets/img/home_background.jpeg")}
+      
+
+<Avatar alt={user.name} src={user.avatar?require("../../assets/uploads/"+user.avatar):require("../../assets/img/home_background.jpeg")} 
       className={classes.bigAvatar} />
+
+
+
     </Grid>
       <p style={{textAlign:"center"}}>{user.name}</p>
       <Divider/>

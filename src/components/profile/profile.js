@@ -80,7 +80,7 @@ class Profile extends Component{
             <div className="container">
             <h1 className="landing-inner text-center">Profile</h1>
                 <Grid container justify="center" alignItems="center">
-      <Avatar alt="Remy Sharp" src={user.avatar?require("../../assets/uploads/"+user.avatar):require("../../assets/img/home_background.jpeg")} 
+      <Avatar alt={user.name} src={user.avatar?require("../../assets/uploads/"+user.avatar):require("../../assets/img/home_background.jpeg")} 
       className={classes.bigAvatar} 
 
       aria-owns={anchorEl ? 'simple-menu' : undefined}
