@@ -91,4 +91,88 @@ u_route.get('/current',passport.authenticate('jwt',{ session : false}),(req,res)
      res.json(req.user);
  });
 
+ var multer = require('multer');
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'src/assets/uploads')
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+var upload = multer({storage: storage});
+
+
+
+u_route.post('/fileUpload', upload.single('file'), (req, res, next) => {
+
+    users.findOne({_id:req.body.user})
+    .then(user=>{
+        if(user){
+
+            users.findOneAndUpdate({_id:req.body.user},{$set:{avatar:req.file.filename}},{new:true})
+            .then(pro=>{
+                if(pro){
+
+                    const payload={id:pro.id, name:pro.name,avatar:pro.avatar};
+
+
+                jwt.sign(
+                    payload,
+                    keys,
+                    {expiresIn:3600},
+                    (err,token)=>{
+                        res.json({
+                            success:{success:'image uploaded'},
+                            token:'Bearer '+token
+                        });
+                    }
+                );
+                }
+            })
+            .catch(err=>{
+                res.status(400).json({error:err});
+            });
+
+            
+        }else{
+            return res.status(400).json({usernot:'User not Found'});
+        }
+    });
+    
+   //res.json({message:"uploaded",filename:req.file.filename,user:req.body.user});
+
+
+});
+
+
+
+u_route.post('/removeimage',(req,res)=>{
+    users.findOneAndUpdate({_id:req.body.id},{$set:{avatar:null}},{new:true})
+    .then(pro=>{
+        if(pro){
+
+            const payload={id:pro.id, name:pro.name,avatar:pro.avatar};
+
+
+        jwt.sign(
+            payload,
+            keys,
+            {expiresIn:3600},
+            (err,token)=>{
+                res.json({
+                    success:true,
+                    token:'Bearer '+token
+                });
+            }
+        );
+        }
+    })
+    .catch(err=>{
+        res.status(400).json({error:err});
+    });
+
+});
+
+
 module.exports = u_route;

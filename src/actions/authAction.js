@@ -35,6 +35,37 @@ export const setCurrentUser = decoded => {
     };
   };
 
+
+  export const changeimage = (file)  => dispatch =>{
+    axios.post('/api/fileUpload',file)
+    .then(res=>{
+        const { token } = res.data;
+        localStorage.setItem('jwt_token',token);
+        setAuthToken(token);
+        const decode = jwt_decode(token);
+        dispatch(setCurrentUser(decode));
+    })
+    .catch(err => dispatch({
+        type:GET_ERRORS,
+        payload:err.response.data
+    }));
+  };
+
+  export const removeimage = (user) => dispatch =>{
+    axios.post('/api/removeimage',user)
+    .then(res=>{
+        const { token } = res.data;
+        localStorage.setItem('jwt_token',token);
+        setAuthToken(token);
+        const decode = jwt_decode(token);
+        dispatch(setCurrentUser(decode));
+    })
+    .catch(err => dispatch({
+        type:GET_ERRORS,
+        payload:err.response.data
+    }));
+  };
+
   export const logoutuser = () => dispatch =>{
     localStorage.removeItem('jwt_token');
     setAuthToken(false);

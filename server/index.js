@@ -28,8 +28,12 @@ app.get('/',(req,res)=>{
     res.send('Hello world');
 });
 
-var routes = require('./routes/u_route');
-app.use('/api',routes);
+var u_routes = require('./routes/u_route');
+app.use('/api',u_routes);
+
+
+var t_routes = require('./routes/t_routes');
+app.use('/api',t_routes);
 
 var PORT = process.env.PORT || 2600;
 
