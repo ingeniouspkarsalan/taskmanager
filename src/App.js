@@ -21,6 +21,9 @@ import { setCurrentUser,logoutuser } from "./actions/authAction";
 
 import NoMatch from "./components/layouts/nomatch";
 
+import Profile from "./components/profile/profile";
+import Addtask from "./components/task/addtask";
+
 if(localStorage.jwt_token){
   setAuthToken(localStorage.jwt_token);
   const decode = jwt_decode(localStorage.jwt_token);
@@ -45,6 +48,12 @@ class App extends Component {
         <Route exact path="/register" component={ Register }/>
         <Switch>
           <PrivateRoute path="/dashboard" component={Dashboard}/>
+        </Switch>
+        <Switch>
+          <PrivateRoute path="/profile" component={Profile}/>
+        </Switch>
+        <Switch>
+          <PrivateRoute path="/addtask" component={Addtask}/>
         </Switch>
         <Footer/>
         </Router>
