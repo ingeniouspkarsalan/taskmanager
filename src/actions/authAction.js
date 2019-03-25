@@ -1,4 +1,4 @@
-import { GET_ERRORS,SET_CURRENT_USER } from "./types";
+import { GET_ERRORS,SET_CURRENT_USER,GET_TASKS } from "./types";
 import axios from 'axios';
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
@@ -66,9 +66,18 @@ export const setCurrentUser = decoded => {
     }));
   };
 
+
+  export const settasks = decoded => {
+    return {
+      type: GET_TASKS,
+      payload : decoded
+    };
+  };
+
   export const logoutuser = () => dispatch =>{
     localStorage.removeItem('jwt_token');
     setAuthToken(false);
     dispatch(setCurrentUser({}));
+    dispatch(settasks({}));
 };
 

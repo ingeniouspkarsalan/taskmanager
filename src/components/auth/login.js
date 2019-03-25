@@ -67,7 +67,7 @@ class Login extends Component{
                   <form onSubmit={this.onsubmit}>
 
             
-            <label for="email">Email :</label>
+            <label htmlFor="email">Email :</label>
                   <TextFieldGroup 
                       type="email" 
                       placeholder="Email Address" 
@@ -77,7 +77,7 @@ class Login extends Component{
                       onChange={this.onchange.bind(this)}
                       error={errors.email}
                         />
-            <label for="password">Password :</label>
+            <label htmlFor="password">Password :</label>
                   <TextFieldGroup 
                       type="password" 
                       placeholder="Password" 

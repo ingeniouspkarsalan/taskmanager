@@ -30,7 +30,7 @@ TextFieldGroup.propTypes={
     error:propTypes.string,
     info:propTypes.string,
     type:propTypes.string.isRequired,
-    onChange:propTypes.string.isRequired,
+    onChange:propTypes.func.isRequired,
     disabled:propTypes.string,
 }
 TextFieldGroup.defaultProps ={

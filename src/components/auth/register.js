@@ -68,7 +68,7 @@ class Register extends Component{
                   <p className="lead text-center">Create your TaskManager account</p>
                   <form onSubmit={this.onsubmit}>
 
-            <label for="name">Name :</label>
+            <label htmlFor="name">Name :</label>
                   <TextFieldGroup 
                       type="text" 
                       placeholder="Name" 
@@ -79,7 +79,7 @@ class Register extends Component{
                         error={errors.name}
                         />
 
-            <label for="age">Age :</label>
+            <label htmlFor="age">Age :</label>
                 <TextFieldGroup 
                       type="number" 
                       placeholder="Age" 
@@ -89,7 +89,7 @@ class Register extends Component{
                       onChange={this.onchange.bind(this)}
                       error={errors.age}
                         />
-            <label for="email">Email :</label>
+            <label htmlFor="email">Email :</label>
                   <TextFieldGroup 
                       type="email" 
                       placeholder="Email Address" 
@@ -99,7 +99,7 @@ class Register extends Component{
                       onChange={this.onchange.bind(this)}
                       error={errors.email}
                         />
-            <label for="password">Password :</label>
+            <label htmlFor="password">Password :</label>
                   <TextFieldGroup 
                       type="password" 
                       placeholder="Password" 
@@ -109,7 +109,7 @@ class Register extends Component{
                       onChange={this.onchange.bind(this)}
                       error={errors.pass}
                       />
-            <label for="repeat_password">Repeat Password :</label>
+            <label htmlFor="repeat_password">Repeat Password :</label>
                   <TextFieldGroup 
                       type="password" 
                       placeholder="Repeat Password" 
