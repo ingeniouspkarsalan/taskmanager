@@ -23,6 +23,10 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
+import Avatar from '@material-ui/core/Avatar';
+import Grid from '@material-ui/core/Grid';
+
+
 
 
 import { Link } from "react-router-dom";
@@ -73,6 +77,11 @@ const styles = theme => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   },
+  bigAvatar: {
+    margin: 10,
+    width: 150,
+    height: 150,
+  }
 });
 
 class Navbar extends Component {
@@ -118,7 +127,7 @@ class Navbar extends Component {
 
   render() {
 
-    const {isAuthenticated} = this.props.auth;
+    const {isAuthenticated,user} = this.props.auth;
     
 
    
@@ -152,6 +161,14 @@ class Navbar extends Component {
 
     
     const authlink = (
+      <div>
+    <Grid container justify="center" alignItems="center">
+      <Avatar alt={user.name} 
+       src={require("../../assets/img/home_background.jpeg")}
+      className={classes.bigAvatar} />
+    </Grid>
+      <p style={{textAlign:"center"}}>{user.name}</p>
+      <Divider/>
       <List component="nav">
       <Link to="/dashboard">
       <ListItem button>
@@ -168,6 +185,7 @@ class Navbar extends Component {
         <ListItemText primary="Add Task" />
       </ListItem></Link>
     </List>
+    </div>
     )
 
 

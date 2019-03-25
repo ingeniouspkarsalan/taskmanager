@@ -19,6 +19,8 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser,logoutuser } from "./actions/authAction";
 
+import NoMatch from "./components/layouts/nomatch";
+
 if(localStorage.jwt_token){
   setAuthToken(localStorage.jwt_token);
   const decode = jwt_decode(localStorage.jwt_token);

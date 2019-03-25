@@ -64,7 +64,7 @@ u_route.post('/login',(req,res)=>{
         bcrypt.compare(password,user.password)
         .then(ismatch=>{
             if(ismatch){
-                const payload={id:user.id, name:user.name};
+                const payload={id:user.id, name:user.name,avatar:user.avatar};
 
 
                 jwt.sign(
