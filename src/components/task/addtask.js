@@ -41,15 +41,15 @@ class Addtask extends Component{
     render(){
         const {errors}=this.state;
         return(
-            <div className="container landing-inner">
+            <div className="container landing-inner vh-100">
             <div className="row">
                 <div className="col-md-8 m-auto text-light">
-                  <h1 className="display-4 text-center alert-info">Task Manager</h1>
-                  <p className="lead text-center alert-primary">Task insert section. </p>
+                  <h1 className="display-4 text-center">Task Manager</h1>
+                  <p className="lead text-center">Task insert section. </p>
                   <form onSubmit={this.onsubmit}>
 
             
-            <label htmlFor="description" className="alert-warning">Description :</label>
+            <label htmlFor="description" >Description :</label>
                   <TextFieldGroup 
                       type="text" 
                       placeholder="Enter Description" 

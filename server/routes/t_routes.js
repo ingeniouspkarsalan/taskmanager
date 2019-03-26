@@ -38,8 +38,8 @@ t_route.post('/addtask',passport.authenticate('jwt',{ session : false}),(req,res
         
 });
 
-t_route.post('/updatetask/:id',passport.authenticate('jwt',{ session : false}),(req,res)=>{
-    task.findByIdAndUpdate({_id:req.param.id},{$set:{
+t_route.patch('/updatetask/:id',passport.authenticate('jwt',{ session : false}),(req,res)=>{
+    task.findByIdAndUpdate({_id:req.params.id},{$set:{
         completed:true
     }})
     .then(tasks=>{
@@ -53,10 +53,12 @@ t_route.post('/updatetask/:id',passport.authenticate('jwt',{ session : false}),(
 });
 
 t_route.delete('/deletetask/:id',passport.authenticate('jwt',{ session : false}),(req,res)=>{
-    task.findByIdAndDelete({_id:req.param.id})
+    task.findOneAndDelete({_id:req.params.id})
     .then(tasks=>{
         if(tasks){
             return res.json({success:true});
+        }else{
+            return res.status(400).json({success:'error'});
         }
     })
     .catch(err=>{

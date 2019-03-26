@@ -39,7 +39,7 @@ if(localStorage.jwt_token){
 class App extends Component {
   render() {
     return (
-      <div className="body vh-100">
+      <div className="body">
         <Provider store={ store }>
       <Router>
         <Navbar/>

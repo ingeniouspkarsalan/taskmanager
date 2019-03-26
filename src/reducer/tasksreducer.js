@@ -1,4 +1,4 @@
-import { GET_TASKS } from "../actions/types";
+import { GET_TASKS,DELETE_TASK } from "../actions/types";
 import isEmpty from "../validation/is-empty";
 
 const initialState = {
@@ -14,6 +14,11 @@ export default function(state = initialState,action){
             having:!isEmpty(action.payload),
             tasks:action.payload
         }
+        case DELETE_TASK:
+        const taskId = action.data;
+        return {
+            tasks:state.tasks.filter(tasks => tasks._id !== taskId)
+        };
         default:
         return state;
     }
