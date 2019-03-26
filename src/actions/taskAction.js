@@ -20,3 +20,13 @@ export const settasks = decoded => {
       payload : decoded
     };
   };
+
+
+  export const addtask = (userdata,history) => dispatch =>{
+    axios.post('api/addtask',userdata)
+    .then(res=>history.push('/dashboard'))
+    .catch(err => dispatch({
+        type:GET_ERRORS,
+        payload:err.response.data
+    }));
+};
