@@ -61,7 +61,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
     },
     greenAvatar: {
         margin: 10,
-        color: '#fff',
+          color: '#fff',
         backgroundColor: green[500],
         height:300,
         width:300

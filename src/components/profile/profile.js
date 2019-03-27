@@ -77,7 +77,7 @@ class Profile extends Component{
         const { anchorEl } = this.state;
         return(
 
-            <div className="container">
+            <div className="container vh-100">
             <h1 className="landing-inner text-center">Profile</h1>
                 <Grid container justify="center" alignItems="center">
       <Avatar alt={user.name} src={user.avatar?require("../../assets/uploads/"+user.avatar):require("../../assets/img/home_background.jpeg")} 
