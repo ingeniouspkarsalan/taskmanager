@@ -118,7 +118,7 @@ class Register extends Component{
                       value={this.state.repeat_password} 
                       onChange={this.onchange.bind(this)}
                       />
-                    <input type="submit" className="btn btn-info btn-block mt-4" />
+                    <input type="submit" value="Register" className="btn btn-info btn-block mt-4" />
                   </form>
                 </div>
               </div>
